@@ -1,0 +1,20 @@
+{
+  "name": "lodasher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && mocha ./test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "chai": "^4.2.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  }
+}
