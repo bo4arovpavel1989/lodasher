@@ -57,6 +57,19 @@ const arrayFns = {
     differenceWith(arr: any[], vals: any[], comparator: (val: any, other: any) => boolean) {
         return arr.filter((val) => !(vals.some((otherVal) => comparator(val, otherVal))));
     },
+    drop(arr: any[], num = 1): any[] {
+        return arr.slice(num);
+    },
+    dropRight(arr: any[], num = 1): any[] {
+        return arr.slice(0, -num);
+    },
+    dropRightWhile(arr: any, fn: (val: any, i: number, arr: any[]) => boolean): any[] {
+        while (fn(arr[arr.length - 1], arr.length - 1, arr)) {
+            arr = arr.slice(0, -1);
+        }
+
+        return arr;
+    },
     findIndex(arr: any[], fn: (val: any) => boolean, index: number = 0) {
         for (let i = index; i < arr.length; i++) {
             if (fn(arr[i])) {

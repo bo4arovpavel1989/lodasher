@@ -94,6 +94,47 @@ describe('Array fns', () => {
         });
     });
 
+    describe('drop', () => {
+        it('should return empty array', () => {
+            const arr = [];
+            expect(_.drop(arr, 1)).to.eql([]);
+        });
+        it('should return sliced array', () => {
+            const arr = [1, 2, 3, 4, 5, 6];
+            expect(_.drop(arr, 2)).to.eql([3, 4, 5, 6]);
+        });
+    });
+
+    describe('dropRight', () => {
+        it('should return empty array', () => {
+            const arr = [];
+            expect(_.dropRight(arr, 1)).to.eql([]);
+        });
+        it('should return sliced array', () => {
+            const arr = [1, 2, 3, 4, 5, 6];
+            expect(_.dropRight(arr, 2)).to.eql([1, 2, 3, 4]);
+        });
+    });
+
+    describe('dropRightWhile', () => {
+        it('should return empty array', () => {
+            const arr = [];
+            expect(_.dropRightWhile(arr, Boolean)).to.eql([]);
+        });
+        it('should return sliced array', () => {
+            const arr = [1, 2, 3, 4, false, false];
+            expect(_.dropRightWhile(arr, (val) => val === false)).to.eql([1, 2, 3, 4]);
+        });
+        it('should return sliced array', () => {
+            const arr = [
+                { 'user': 'barney',  'active': true },
+                { 'user': 'fred',    'active': false },
+                { 'user': 'pebbles', 'active': false }
+              ];
+            expect(_.dropRightWhile(arr, o => !o.active )).to.eql([{ 'user': 'barney',  'active': true }]);
+        });
+    });
+
     describe('findIndex', () => {
         it('should return right index', () => {
             const arr = [1, 2, 3];
