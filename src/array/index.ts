@@ -70,6 +70,13 @@ const arrayFns = {
 
         return arr;
     },
+    fill(arr: any[], val: any, start = 0, end = arr.length): any[] {
+        for (let i = start; i < end; i++) {
+            arr[i] = val;
+        }
+
+        return arr;
+    },
     findIndex(arr: any[], fn: (val: any) => boolean, index: number = 0) {
         for (let i = index; i < arr.length; i++) {
             if (fn(arr[i])) {
@@ -78,6 +85,18 @@ const arrayFns = {
         }
 
         return -1;
+    },
+    findLastIndex(arr: any[], fn: (val: any) => boolean, index: number = arr.length - 1) {
+        for (let i = index; i >= 0; i--) {
+            if (fn(arr[i])) {
+                return i;
+            }
+        }
+
+        return -1;
+    },
+    head(arr: any[]): any {
+        return arr[0];
     }
 };
 

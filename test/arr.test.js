@@ -135,6 +135,21 @@ describe('Array fns', () => {
         });
     });
 
+    describe('fill', () => {
+        it('should return fileed array', () => {
+            const arr = [1, 2, 3];
+
+            _.fill(arr, 'a');
+            expect(arr).to.eql(['a', 'a', 'a']);
+        });
+        it('should return fileed array', () => {
+            expect(_.fill(Array(3), 2)).to.eql([2, 2, 2]);
+        });
+        it('should return fileed array', () => {
+            expect(_.fill([4, 6, 8, 10], '*', 1, 3)).to.eql([4, '*', '*', 10]);
+        });
+    });
+
     describe('findIndex', () => {
         it('should return right index', () => {
             const arr = [1, 2, 3];
@@ -150,6 +165,35 @@ describe('Array fns', () => {
             const arr = [1, 3, 5, 7];
             const fn = (val) => (val % 2 === 0);
             expect(_.findIndex(arr, fn)).to.eql(-1);
+        });
+    });
+
+    describe('findLastIndex', () => {
+        it('should return right index', () => {
+            const arr = [1, 2, 3, 4];
+            const fn = (val) => (val % 2 === 0);
+            expect(_.findLastIndex(arr, fn)).to.eql(3);
+        });
+        it('should return right index, starting from the middle of array', () => {
+            const arr = [1, 2, 3, 4, 5, 6];
+            const fn = (val) => (val % 2 === 0);
+            expect(_.findLastIndex(arr, fn, 4)).to.eql(3);
+        });
+        it('should return -1 index', () => {
+            const arr = [1, 3, 5, 7];
+            const fn = (val) => (val % 2 === 0);
+            expect(_.findLastIndex(arr, fn)).to.eql(-1);
+        });
+    });
+
+    describe('head', () => {
+        it('should return first element', () => {
+            const arr = [1, 2, 3, 4];
+            expect(_.head(arr)).to.eql(1);
+        });
+        it('should return undefined', () => {
+            const arr = [];
+            expect(_.head(arr)).to.eql(undefined);
         });
     });
 });
