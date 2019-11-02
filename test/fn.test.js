@@ -19,4 +19,21 @@ describe('Function fns', () => {
             expect(callback.withArgs('settings').calledOnce).to.eql(true);
         });
     });
+
+    describe('ary', () => {
+        it('should call function ', () => {
+            const arr = ['6', '8', '10'].map( _.ary(parseInt, 1));
+
+            expect(arr).to.eql([6, 8, 10]);
+        });
+    });
+
+    describe('before', () => {
+        it('should call function ', () => {
+            const before = _.before(2, parseInt);
+            const arr = ['6', '8', '10'].map(val => before(val));
+
+            expect(arr).to.eql([6, 8, 8]);
+        });
+    });
 });
